@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <script>
+        async function getDayInfo(value) {
+    const slicers = ['.', ',']
+    for (var i = 0; i < slicers.length; i++) {
+        const slicer = slicers[i]
+        if (!value.includes(slicer)) continue
+
+        var date = value.split(slicer)[0]
+        var month = value.split(slicer)[1]
+        var year = value.split(slicer)[2]
+
+        const formattedDate = new Date(`${month},${date},${year}`)
+
+        const WeekDays = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
+        const WeekDay = WeekDays[formattedDate.getDay()]
+
+        const WeekNums = ['Первая', 'Вторая', 'Третья', 'Четвертая', 'Пятая']
+        const WeekNum = WeekNums[Math.floor((formattedDate.getDate() + 1) / 7)]
+
+        const Months = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря']
+        const Month = Months[formattedDate.getMonth()]
+
+        const FormattedDateToStr = `${WeekDay} ${WeekNum.toLowerCase()} неделя ${Month.toLowerCase()} ${year.toLowerCase()} года`
+        console.log(FormattedDateToStr)
+    }
+}
+
+getDayInfo(`01.01.2022`)
+getDayInfo(`15.12.2021`)
+
+
+    </script>
+    
+</body>
+</html>
